@@ -7,6 +7,7 @@ import ait.employee.model.Manager;
 import ait.employee.model.SalesManager;
 import ait.employee.model.WageEmployee;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,8 +29,13 @@ class CompanyTest {
 
     }
 
-    @org.junit.jupiter.api.Test
-    void addEmployee() {
+    @Test
+    void addEmployee() {// добавление объекта Employee
+        // нельзя добавить null
+// нельзя добавить уже существующий объект
+// нельзя добавить больше, чем предельное число объектов
+// можно добавить новый объект
+// ожидаем правильный рост кол-ва объектов
         assertFalse(company.addEmployee(null));
         assertFalse(company.addEmployee(employees[1]));
         Employee employee = new SalesManager(5000, "Rabindranate", "Anand", 80, 30000, 0.1);
@@ -39,31 +45,42 @@ class CompanyTest {
         assertFalse(company.addEmployee(employee));
     }
 
-    @org.junit.jupiter.api.Test
-    void removeEmployee() {
+    @Test
+    void removeEmployee() {// удаляем объект типа Employee, находим его по id
+// нельзя удалить второй раз объект
+// ожидаем правильное уменьшение кол-ва объектов
+        assertFalse(company.removeEmployee(int id));
+        assertTrue(company.removeEmployee(int id));
     }
 
-    @org.junit.jupiter.api.Test
-    void findEmployee() {
+    @Test
+    void findEmployee() { //находим объект типа Employee, находим его по id
+        // ожидаем объект Employee, найденный по его id
+        assertTrue(company.findEmployee(int id));
     }
 
-    @org.junit.jupiter.api.Test
-    void quantity() {
+    @Test
+    void quantity() {// считаем кол-во объектов
+        // ожидаем правильные значения при изменении кол-ва объектов
+
     }
 
-    @org.junit.jupiter.api.Test
-    void totalSalary() {
+    @Test
+    void totalSalary() {// расчет зарплаты
+        // ожидаем правильные значения
     }
 
-    @org.junit.jupiter.api.Test
-    void avgSalary() {
+    @Test
+    void avgSalary() {// расчет  средней зарплаты
+        // ожидаем правильные значения
     }
 
-    @org.junit.jupiter.api.Test
-    void totalSales() {
+    @Test
+    void totalSales() {// расчет обьема продаж
+        // ожидаем правильные значения
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void printEmployees() {
         company.printEmployees();
     }

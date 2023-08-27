@@ -13,27 +13,38 @@ public class CompanyImpl implements Company {
     }
 
     @Override
-    public boolean addEmployee(Employee employee) {
+    public boolean addEmployee(Employee employee) {// добавление объекта Employee
+        // нельзя добавить null
+// нельзя добавить уже существующий объект
+// нельзя добавить больше, чем предельное число объектов
+// можно добавить новый объект
+// ожидаем правильный рост кол-ва объектов
         return false;
     }
 
     @Override
     public Employee removeEmployee(int id) {
+        // удаляем объект типа Employee, находим его по id
+// нельзя удалить второй раз объект
+// ожидаем правильное уменьшение кол-ва объектов
         return null;
     }
 
     @Override
-    public Employee findEmployee(int id) {
+    public Employee findEmployee(int id) {// находим объект типа Employee, находим его по id
+        // ожидаем объект Employee, найденный по его id
         return null;
     }
 
     @Override
-    public int quantity() {
+    public int quantity() {// считаем кол-во объектов
+        // ожидаем правильные значения при изменении кол-ва объектов
         return 0;
     }
 
     @Override
-    public double totalSalary() {
+    public double totalSalary() {// расчет зарплаты
+        // ожидаем правильные значения
         return 0;
     }
 
