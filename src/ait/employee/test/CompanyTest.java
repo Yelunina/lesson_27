@@ -31,11 +31,7 @@ class CompanyTest {
 
     @Test
     void addEmployee() {// добавление объекта Employee
-        // нельзя добавить null
-// нельзя добавить уже существующий объект
-// нельзя добавить больше, чем предельное число объектов
-// можно добавить новый объект
-// ожидаем правильный рост кол-ва объектов
+
         assertFalse(company.addEmployee(null));
         assertFalse(company.addEmployee(employees[1]));
         Employee employee = new SalesManager(5000, "Rabindranate", "Anand", 80, 30000, 0.1);
@@ -47,41 +43,59 @@ class CompanyTest {
 
     @Test
     void removeEmployee() {// удаляем объект типа Employee, находим его по id
-// нельзя удалить второй раз объект
-// ожидаем правильное уменьшение кол-ва объектов
-        assertFalse(company.removeEmployee(int id));
-        assertTrue(company.removeEmployee(int id));
+        Employee employee = company.removeEmployee(3000);
+        assertEquals(employees[2], employee);
+        assertEquals(3, company.quantity());
+        assertEquals(null, company.removeEmployee(3000));
+
     }
 
     @Test
     void findEmployee() { //находим объект типа Employee, находим его по id
-        // ожидаем объект Employee, найденный по его id
-        assertTrue(company.findEmployee(int id));
+        Employee employee = company.findEmployee(2000);
+        assertEquals(employees[1], employee);
+        employee = company.findEmployee(5000);
+        assertNull(employee);
+
     }
 
     @Test
     void quantity() {// считаем кол-во объектов
-        // ожидаем правильные значения при изменении кол-ва объектов
+       assertEquals(4,company.quantity());
 
     }
 
     @Test
     void totalSalary() {// расчет зарплаты
-        // ожидаем правильные значения
+    assertEquals(11200.0,company.totalSalary(),0.01);
     }
 
     @Test
     void avgSalary() {// расчет  средней зарплаты
-        // ожидаем правильные значения
+        assertEquals(11200.0/4,company.avgSalary(),0.01);
     }
 
     @Test
     void totalSales() {// расчет обьема продаж
-        // ожидаем правильные значения
+        assertEquals(50_000.0,company.totalSales(),0.01);
     }
+
 
     @Test
     void printEmployees() {
         company.printEmployees();
     }
-}
+
+    @Test
+    void findEmployeesHoursGreaterThan(){
+        Employee[] actual = company.findEmployeesHoursGreaterThan(100);
+        Employee[] expected = {employees[0], employees[1], employees[2]};
+        assertArrayEquals(expected,actual);
+        }
+        @Test
+    void findEmployeeSalaryRange(){
+        Employee[] actual = company.findEmployeeSalaryRange(2000,2500);
+        Employee[] expected = {employees[1],employees[2]};
+        assertArrayEquals(expected,actual);
+        }
+    }
